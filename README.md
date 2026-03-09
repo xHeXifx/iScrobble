@@ -71,6 +71,5 @@ Super simple settings screen, lastfm api configuration is below this.
 
 ## Known Issues
   - Clicking items on sub-views (e.g. settings view/api cred view) closes the menu. To click some stuff you'll have to go back and click the item AGAIN for it to trigger
-  - When first starting a song sometimes the app doesn't pick it up, simply pausing and starting the song causes it to track and then it shouldn't happen again.
 
 ## [LICENSE](/LICENSE)

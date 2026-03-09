@@ -1,5 +1,6 @@
 import WidgetKit
 import SwiftUI
+import AppKit
 import os
 
 private let logger = Logger(subsystem: "com.hexif.iScrobble.widget", category: "Timeline")
@@ -8,6 +9,7 @@ struct WidgetData: Codable {
     var trackTitle: String = ""
     var trackArtist: String = ""
     var trackAlbum: String = ""
+    var albumArtFileName: String? = nil
     var isPlaying: Bool = false
     var lastUpdated: TimeInterval = 0
     var todayScrobbles: Int = 0
@@ -19,6 +21,18 @@ struct WidgetData: Codable {
 struct iScrobbleEntry: TimelineEntry {
     let date: Date
     let data: WidgetData
+}
+
+private func loadAlbumArt(fileName: String?) -> NSImage? {
+    guard let fileName = fileName,
+          let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.hexif.iScrobble") else {
+        return nil
+    }
+    let fileURL = containerURL.appendingPathComponent(fileName)
+    guard let data = try? Data(contentsOf: fileURL) else {
+        return nil
+    }
+    return NSImage(data: data)
 }
 
 struct iScrobbleProvider: TimelineProvider {
@@ -116,10 +130,20 @@ private struct SmallWidgetView: View {
             Spacer()
 
             if !data.trackTitle.isEmpty {
-                Image(systemName: data.isPlaying ? "play.circle.fill" : "pause.circle.fill")
-                    .font(.title2)
-                    .foregroundStyle(data.isPlaying ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
-                    .padding(.bottom, 4)
+                if let albumArt = loadAlbumArt(fileName: data.albumArtFileName) {
+                    Image(nsImage: albumArt)
+                        .resizable()
+                        .interpolation(.high)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 50, height: 50)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                        .padding(.bottom, 4)
+                } else {
+                    Image(systemName: data.isPlaying ? "play.circle.fill" : "pause.circle.fill")
+                        .font(.title2)
+                        .foregroundStyle(data.isPlaying ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
+                        .padding(.bottom, 4)
+                }
                 Text(data.trackTitle)
                     .font(.caption)
                     .fontWeight(.semibold)
@@ -164,10 +188,20 @@ private struct MediumWidgetView: View {
                 Spacer()
 
                 if !data.trackTitle.isEmpty {
-                    Image(systemName: data.isPlaying ? "play.circle.fill" : "pause.circle.fill")
-                        .font(.title)
-                        .foregroundStyle(data.isPlaying ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
-                        .padding(.bottom, 6)
+                    if let albumArt = loadAlbumArt(fileName: data.albumArtFileName) {
+                        Image(nsImage: albumArt)
+                            .resizable()
+                            .interpolation(.high)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 65, height: 65)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .padding(.bottom, 6)
+                    } else {
+                        Image(systemName: data.isPlaying ? "play.circle.fill" : "pause.circle.fill")
+                            .font(.title)
+                            .foregroundStyle(data.isPlaying ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
+                            .padding(.bottom, 6)
+                    }
                     Text(data.trackTitle)
                         .font(.subheadline)
                         .fontWeight(.semibold)
@@ -267,3 +301,4 @@ private struct StatRow: View {
         }
     }
 }
+

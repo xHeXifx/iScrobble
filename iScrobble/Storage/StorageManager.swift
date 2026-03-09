@@ -1,5 +1,6 @@
 import Foundation
 import Security
+import AppKit
 
 final class StorageManager {
     static let shared = StorageManager()
@@ -165,6 +166,38 @@ final class StorageManager {
         FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
             .first?
             .appendingPathComponent("iScrobble", isDirectory: true)
+    }
+
+    func saveAlbumArt(_ image: NSImage, trackID: String) -> String? {
+        guard let containerURL = groupContainerURL else {
+            print("[StorageManager] ERROR: Could not access App Group container")
+            return nil
+        }
+        
+        guard let tiffData = image.tiffRepresentation,
+              let bitmapImage = NSBitmapImageRep(data: tiffData),
+              let pngData = bitmapImage.representation(using: .png, properties: [:]) else {
+            print("[StorageManager] ERROR: Failed to convert album art to PNG")
+            return nil
+        }
+        
+        let fileName = "albumart-\(trackID.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? trackID).png"
+        let fileURL = containerURL.appendingPathComponent(fileName)
+        
+        do {
+            try pngData.write(to: fileURL, options: .atomic)
+            print("[StorageManager] Saved album art to: \(fileURL.path)")
+            return fileName
+        } catch {
+            print("[StorageManager] ERROR: Failed to save album art: \(error)")
+            return nil
+        }
+    }
+    
+    func loadAlbumArt(fileName: String) -> NSImage? {
+        guard let containerURL = groupContainerURL else { return nil }
+        let fileURL = containerURL.appendingPathComponent(fileName)
+        return NSImage(contentsOf: fileURL)
     }
 
     func appSupportFileURL(named fileName: String) -> URL? {

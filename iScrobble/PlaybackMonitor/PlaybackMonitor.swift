@@ -1,4 +1,5 @@
 import Foundation
+import AppKit
 
 @Observable
 final class PlaybackMonitor {
@@ -13,6 +14,11 @@ final class PlaybackMonitor {
 
     private var observer: NSObjectProtocol?
     private var lastTrackID: String?
+    private let lastFMClient: LastFMClient
+    
+    init(lastFMClient: LastFMClient) {
+        self.lastFMClient = lastFMClient
+    }
 
     func start() async {
         print("[PlaybackMonitor] Registering observer for 'com.apple.Music.playerInfo'")
@@ -74,16 +80,44 @@ final class PlaybackMonitor {
         let trackID = "\(artist)-\(title)"
         if trackID != lastTrackID {
             lastTrackID = trackID
+            
             let track = Track(
                 id: trackID,
                 title: title,
                 artist: artist,
                 album: album,
-                duration: duration
+                duration: duration,
+                albumArt: nil
             )
             currentTrack = track
             print("[PlaybackMonitor] Track changed → \"\(artist) — \(title)\"")
             onTrackStarted?(track)
+            
+            Task { [weak self] in
+                guard let self = self else { return }
+                do {
+                    print("[PlaybackMonitor] Fetching album art from Last.fm...")
+                    if let albumArt = try await self.lastFMClient.fetchAlbumArt(artist: artist, track: title) {
+                        print("[PlaybackMonitor] Album art fetched successfully")
+                        let updatedTrack = Track(
+                            id: trackID,
+                            title: title,
+                            artist: artist,
+                            album: album,
+                            duration: duration,
+                            albumArt: albumArt
+                        )
+                        await MainActor.run {
+                            self.currentTrack = updatedTrack
+                            self.onTrackStarted?(updatedTrack)
+                        }
+                    } else {
+                        print("[PlaybackMonitor] No album art available from Last.fm")
+                    }
+                } catch {
+                    print("[PlaybackMonitor] Failed to fetch album art: \(error.localizedDescription)")
+                }
+            }
         }
 
         if newIsPlaying != isPlaying {

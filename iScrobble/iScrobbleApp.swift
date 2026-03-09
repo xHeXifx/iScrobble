@@ -11,6 +11,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApp.setActivationPolicy(.accessory)
         }
     }
+    
+    func applicationWillTerminate(_ notification: Notification) {
+        let task = Process()
+        task.launchPath = "/usr/bin/killall"
+        task.arguments = ["-9", "iScrobbleWidgetExtension"]
+        try? task.run()
+    }
 }
 
 @main
@@ -22,9 +29,9 @@ struct iScrobbleApp: App {
         MenuBarExtra {
             MenuBarView()
                 .environment(appState)
-                .task { await appState.start() }
         } label: {
             MenuBarIconView(isPlaying: appState.playbackMonitor.isPlaying)
+                .task { await appState.start() }
         }
         .menuBarExtraStyle(.window)
         

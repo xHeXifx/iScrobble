@@ -1,5 +1,6 @@
 import Foundation
 import CryptoKit
+import AppKit
 
 final class LastFMClient {
     private let storageManager: StorageManager
@@ -109,9 +110,14 @@ final class LastFMClient {
 
         let (data, response) = try await URLSession.shared.data(from: url)
 
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200..<300).contains(httpResponse.statusCode) else {
-            print("[LastFMClient] Invalid HTTP response for user info")
+        guard let httpResponse = response as? HTTPURLResponse else {
+            print("[LastFMClient] Response is not HTTPURLResponse for user info")
+            throw LastFMError.invalidResponse
+        }
+        
+        guard (200..<300).contains(httpResponse.statusCode) else {
+            let responseString = String(data: data, encoding: .utf8) ?? "<unable to decode>"
+            print("[LastFMClient] HTTP error for user info: status \(httpResponse.statusCode), body: \(responseString)")
             throw LastFMError.invalidResponse
         }
 
@@ -127,6 +133,89 @@ final class LastFMClient {
         return playcount
     }
 
+    func fetchAlbumArt(artist: String, track: String) async throws -> NSImage? {
+        print("[LastFMClient] Fetching artwork for: \(artist) - \(track)")
+        
+        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "method", value: "track.getInfo"),
+            URLQueryItem(name: "artist", value: artist),
+            URLQueryItem(name: "track", value: track),
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "format", value: "json")
+        ]
+        
+        guard let url = urlComponents.url else {
+            print("[LastFMClient] Failed to construct URL for track info")
+            throw LastFMError.invalidResponse
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            print("[LastFMClient] Response is not HTTPURLResponse for track info")
+            throw LastFMError.invalidResponse
+        }
+        
+        guard (200..<300).contains(httpResponse.statusCode) else {
+            let responseString = String(data: data, encoding: .utf8) ?? "<unable to decode>"
+            print("[LastFMClient] HTTP error for track info: status \(httpResponse.statusCode), body: \(responseString)")
+            throw LastFMError.invalidResponse
+        }
+        
+        if let errorResponse = try? JSONDecoder().decode(ErrorOnlyResponse.self, from: data),
+           let code = errorResponse.error {
+            print("[LastFMClient] API error fetching track info: \(errorResponse.message ?? "Unknown")")
+            throw LastFMError.apiError(code: code, message: errorResponse.message ?? "Unknown error")
+        }
+        
+        let trackInfoResponse: TrackInfoResponse
+        do {
+            trackInfoResponse = try JSONDecoder().decode(TrackInfoResponse.self, from: data)
+        } catch {
+            let responseString = String(data: data, encoding: .utf8) ?? "<unable to decode>"
+            print("[LastFMClient] Failed to decode track info response: \(error)")
+            print("[LastFMClient] Response body: \(responseString)")
+            throw LastFMError.invalidResponse
+        }
+        
+        if let album = trackInfoResponse.track.album {
+            print("[LastFMClient] Track has album data with \(album.image.count) images")
+            for img in album.image {
+                print("[LastFMClient]   Image size: \(img.size), URL: \(img.text.isEmpty ? "<empty>" : img.text.prefix(50))...")
+            }
+        } else {
+            print("[LastFMClient] Track has no album data")
+        }
+        
+        let images = trackInfoResponse.track.album?.image ?? []
+        guard let artworkURL = (
+            images.first(where: { !$0.text.isEmpty && $0.size == "mega" }) ??
+            images.first(where: { !$0.text.isEmpty && $0.size == "extralarge" }) ??
+            images.first(where: { !$0.text.isEmpty && $0.size == "large" })
+        )?.text else {
+            print("[LastFMClient] No artwork URL found for track - Last.fm has no artwork for this track")
+            return nil
+        }
+        
+        print("[LastFMClient] Found artwork URL (\(images.first(where: { $0.text == artworkURL })?.size ?? "unknown") size): \(artworkURL)")
+        
+        guard let imageURL = URL(string: artworkURL) else {
+            print("[LastFMClient] Invalid artwork URL")
+            return nil
+        }
+        
+        let (imageData, _) = try await URLSession.shared.data(from: imageURL)
+        
+        guard let image = NSImage(data: imageData) else {
+            print("[LastFMClient] Failed to create NSImage from data")
+            return nil
+        }
+        
+        print("[LastFMClient] Successfully fetched album art (\(imageData.count) bytes)")
+        return image
+    }
+
     private func apiSig(for params: [String: String]) -> String {
         let excluded: Set<String> = ["format", "callback"]
         let sorted = params
@@ -135,7 +224,9 @@ final class LastFMClient {
             .map { $0.key + $0.value }
             .joined()
         let toHash = sorted + apiSecret
-        return md5(toHash)
+        let signature = md5(toHash)
+        
+        return signature
     }
 
     private func md5(_ string: String) -> String {
@@ -145,22 +236,34 @@ final class LastFMClient {
 
 
     private func post(params: [String: String]) async throws -> Data {
+        
         var request = URLRequest(url: baseURL)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = params
+        
+        var allowedCharacters = CharacterSet.urlQueryAllowed
+        allowedCharacters.remove(charactersIn: "&=+")
+        
+        let bodyString = params
             .map { key, value in
-                let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? key
-                let encodedValue = value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? value
+                let encodedKey = key.addingPercentEncoding(withAllowedCharacters: allowedCharacters) ?? key
+                let encodedValue = value.addingPercentEncoding(withAllowedCharacters: allowedCharacters) ?? value
                 return "\(encodedKey)=\(encodedValue)"
             }
             .joined(separator: "&")
-            .data(using: .utf8)
+        
+        request.httpBody = bodyString.data(using: .utf8)
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200..<300).contains(httpResponse.statusCode) else {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            print("[LastFMClient] Response is not HTTPURLResponse for POST request")
+            throw LastFMError.invalidResponse
+        }
+        
+        guard (200..<300).contains(httpResponse.statusCode) else {
+            let responseString = String(data: data, encoding: .utf8) ?? "<unable to decode>"
+            print("[LastFMClient] HTTP error for POST: status \(httpResponse.statusCode), body: \(responseString)")
             throw LastFMError.invalidResponse
         }
 
@@ -197,5 +300,27 @@ private struct UserInfoResponse: Decodable {
     struct UserPayload: Decodable {
         let name: String
         let playcount: String
+    }
+}
+
+private struct TrackInfoResponse: Decodable {
+    let track: TrackPayload
+    
+    struct TrackPayload: Decodable {
+        let album: AlbumPayload?
+        
+        struct AlbumPayload: Decodable {
+            let image: [ImagePayload]
+            
+            struct ImagePayload: Decodable {
+                let text: String
+                let size: String
+                
+                enum CodingKeys: String, CodingKey {
+                    case text = "#text"
+                    case size
+                }
+            }
+        }
     }
 }

@@ -139,10 +139,16 @@ final class ScrobbleManager {
         )
         storageManager.writeNowPlayingState(state)
 
+        var albumArtFileName: String? = nil
+        if let track = track, let albumArt = track.albumArt {
+            albumArtFileName = storageManager.saveAlbumArt(albumArt, trackID: track.id)
+        }
+
         let widgetData = WidgetData(
             trackTitle: track?.title ?? "",
             trackArtist: track?.artist ?? "",
             trackAlbum: track?.album ?? "",
+            albumArtFileName: albumArtFileName,
             isPlaying: isPlaying,
             lastUpdated: Date().timeIntervalSince1970,
             todayScrobbles: statsManager.todayScrobbles,

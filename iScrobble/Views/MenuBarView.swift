@@ -82,10 +82,24 @@ struct MenuBarView: View {
         VStack(alignment: .leading, spacing: 8) {
             if let track = monitor.currentTrack {
                 HStack(alignment: .top, spacing: 10) {
-                    Image(systemName: monitor.isPlaying ? "play.circle.fill" : "pause.circle.fill")
-                        .font(.title)
-                        .foregroundStyle(monitor.isPlaying ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
-                        .symbolEffect(.variableColor, isActive: monitor.isPlaying)
+                    if let albumArt = track.albumArt {
+                        Image(nsImage: albumArt)
+                            .resizable()
+                            .interpolation(.high)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 60, height: 60)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.primary.opacity(0.1), lineWidth: 1)
+                            )
+                    } else {
+                        Image(systemName: monitor.isPlaying ? "play.circle.fill" : "pause.circle.fill")
+                            .font(.title)
+                            .foregroundStyle(monitor.isPlaying ? AnyShapeStyle(.tint) : AnyShapeStyle(.secondary))
+                            .symbolEffect(.variableColor, isActive: monitor.isPlaying)
+                            .frame(width: 60, height: 60)
+                    }
 
                     VStack(alignment: .leading, spacing: 2) {
                         Text(track.title)

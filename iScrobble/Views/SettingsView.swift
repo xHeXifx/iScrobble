@@ -12,7 +12,7 @@ struct SettingsView: View {
     private var storage: StorageManager { appState.storage }
 
     private var version: String {
-        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "2.1"
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "2.2"
     }
 
     var body: some View {

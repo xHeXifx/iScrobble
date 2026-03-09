@@ -13,8 +13,8 @@ final class AppState {
         let storage = StorageManager.shared
         let client = LastFMClient(storageManager: storage)
         let stats = StatsManager(storageManager: storage)
+        let monitor = PlaybackMonitor(lastFMClient: client)
         let scrobble = ScrobbleManager(lastFMClient: client, storageManager: storage, statsManager: stats)
-        let monitor = PlaybackMonitor()
 
         self.storage = storage
         self.lastFMClient = client
