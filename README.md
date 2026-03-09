@@ -34,8 +34,6 @@ Super simple settings screen, lastfm api configuration is below this.
 
 ## How to build from source
 
-## Building from Source
-
 ### Prerequisites
 - Xcode and Git installed
 - An active Apple Developer account (for signing)
