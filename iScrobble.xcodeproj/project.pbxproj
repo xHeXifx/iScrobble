@@ -1,0 +1,842 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		148282442F5D2CA5006C14C5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148282432F5D2CA4006C14C5 /* WidgetKit.framework */; };
+		148282462F5D2CA5006C14C5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148282452F5D2CA5006C14C5 /* SwiftUI.framework */; };
+		148282532F5D2CA5006C14C5 /* iScrobbleWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 148282412F5D2CA4006C14C5 /* iScrobbleWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1482825B2F5D317E006C14C5 /* iScrobble.icon in Resources */ = {isa = PBXBuildFile; fileRef = 1482825A2F5D317E006C14C5 /* iScrobble.icon */; };
+		1482825C2F5D317E006C14C5 /* iScrobble.icon in Resources */ = {isa = PBXBuildFile; fileRef = 1482825A2F5D317E006C14C5 /* iScrobble.icon */; };
+		1482825E2F5D3559006C14C5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148282432F5D2CA4006C14C5 /* WidgetKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		148281AD2F5D2033006C14C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 148281972F5D2032006C14C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1482819E2F5D2032006C14C5;
+			remoteInfo = iScrobble;
+		};
+		148281B72F5D2033006C14C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 148281972F5D2032006C14C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1482819E2F5D2032006C14C5;
+			remoteInfo = iScrobble;
+		};
+		148282512F5D2CA5006C14C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 148281972F5D2032006C14C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 148282402F5D2CA4006C14C5;
+			remoteInfo = iScrobbleWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		148282582F5D2CA5006C14C5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				148282532F5D2CA5006C14C5 /* iScrobbleWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1482819F2F5D2032006C14C5 /* iScrobble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iScrobble.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		148281AC2F5D2033006C14C5 /* iScrobbleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iScrobbleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		148281B62F5D2033006C14C5 /* iScrobbleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iScrobbleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		148282412F5D2CA4006C14C5 /* iScrobbleWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iScrobbleWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		148282432F5D2CA4006C14C5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		148282452F5D2CA5006C14C5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		1482825A2F5D317E006C14C5 /* iScrobble.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = iScrobble.icon; sourceTree = "<group>"; };
+		148282612F5D3CB0006C14C5 /* iScrobbleWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iScrobbleWidgetExtension.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		148282542F5D2CA5006C14C5 /* Exceptions for "iScrobbleWidget" folder in "iScrobbleWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 148282402F5D2CA4006C14C5 /* iScrobbleWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		148281A12F5D2032006C14C5 /* iScrobble */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iScrobble;
+			sourceTree = "<group>";
+		};
+		148281AF2F5D2033006C14C5 /* iScrobbleTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iScrobbleTests;
+			sourceTree = "<group>";
+		};
+		148281B92F5D2033006C14C5 /* iScrobbleUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iScrobbleUITests;
+			sourceTree = "<group>";
+		};
+		148282472F5D2CA5006C14C5 /* iScrobbleWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				148282542F5D2CA5006C14C5 /* Exceptions for "iScrobbleWidget" folder in "iScrobbleWidgetExtension" target */,
+			);
+			path = iScrobbleWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1482819C2F5D2032006C14C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1482825E2F5D3559006C14C5 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		148281A92F5D2033006C14C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		148281B32F5D2033006C14C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1482823E2F5D2CA4006C14C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				148282462F5D2CA5006C14C5 /* SwiftUI.framework in Frameworks */,
+				148282442F5D2CA5006C14C5 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		148281962F5D2032006C14C5 = {
+			isa = PBXGroup;
+			children = (
+				148282612F5D3CB0006C14C5 /* iScrobbleWidgetExtension.entitlements */,
+				1482825A2F5D317E006C14C5 /* iScrobble.icon */,
+				148281A12F5D2032006C14C5 /* iScrobble */,
+				148281AF2F5D2033006C14C5 /* iScrobbleTests */,
+				148281B92F5D2033006C14C5 /* iScrobbleUITests */,
+				148282472F5D2CA5006C14C5 /* iScrobbleWidget */,
+				148282422F5D2CA4006C14C5 /* Frameworks */,
+				148281A02F5D2032006C14C5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		148281A02F5D2032006C14C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1482819F2F5D2032006C14C5 /* iScrobble.app */,
+				148281AC2F5D2033006C14C5 /* iScrobbleTests.xctest */,
+				148281B62F5D2033006C14C5 /* iScrobbleUITests.xctest */,
+				148282412F5D2CA4006C14C5 /* iScrobbleWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		148282422F5D2CA4006C14C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				148282432F5D2CA4006C14C5 /* WidgetKit.framework */,
+				148282452F5D2CA5006C14C5 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1482819E2F5D2032006C14C5 /* iScrobble */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 148281C02F5D2033006C14C5 /* Build configuration list for PBXNativeTarget "iScrobble" */;
+			buildPhases = (
+				1482819B2F5D2032006C14C5 /* Sources */,
+				1482819C2F5D2032006C14C5 /* Frameworks */,
+				1482819D2F5D2032006C14C5 /* Resources */,
+				148282582F5D2CA5006C14C5 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				148282522F5D2CA5006C14C5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				148281A12F5D2032006C14C5 /* iScrobble */,
+			);
+			name = iScrobble;
+			packageProductDependencies = (
+			);
+			productName = iScrobble;
+			productReference = 1482819F2F5D2032006C14C5 /* iScrobble.app */;
+			productType = "com.apple.product-type.application";
+		};
+		148281AB2F5D2033006C14C5 /* iScrobbleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 148281C32F5D2033006C14C5 /* Build configuration list for PBXNativeTarget "iScrobbleTests" */;
+			buildPhases = (
+				148281A82F5D2033006C14C5 /* Sources */,
+				148281A92F5D2033006C14C5 /* Frameworks */,
+				148281AA2F5D2033006C14C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				148281AE2F5D2033006C14C5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				148281AF2F5D2033006C14C5 /* iScrobbleTests */,
+			);
+			name = iScrobbleTests;
+			packageProductDependencies = (
+			);
+			productName = iScrobbleTests;
+			productReference = 148281AC2F5D2033006C14C5 /* iScrobbleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		148281B52F5D2033006C14C5 /* iScrobbleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 148281C62F5D2033006C14C5 /* Build configuration list for PBXNativeTarget "iScrobbleUITests" */;
+			buildPhases = (
+				148281B22F5D2033006C14C5 /* Sources */,
+				148281B32F5D2033006C14C5 /* Frameworks */,
+				148281B42F5D2033006C14C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				148281B82F5D2033006C14C5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				148281B92F5D2033006C14C5 /* iScrobbleUITests */,
+			);
+			name = iScrobbleUITests;
+			packageProductDependencies = (
+			);
+			productName = iScrobbleUITests;
+			productReference = 148281B62F5D2033006C14C5 /* iScrobbleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		148282402F5D2CA4006C14C5 /* iScrobbleWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 148282552F5D2CA5006C14C5 /* Build configuration list for PBXNativeTarget "iScrobbleWidgetExtension" */;
+			buildPhases = (
+				1482823D2F5D2CA4006C14C5 /* Sources */,
+				1482823E2F5D2CA4006C14C5 /* Frameworks */,
+				1482823F2F5D2CA4006C14C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				148282472F5D2CA5006C14C5 /* iScrobbleWidget */,
+			);
+			name = iScrobbleWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = iScrobbleWidgetExtension;
+			productReference = 148282412F5D2CA4006C14C5 /* iScrobbleWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		148281972F5D2032006C14C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					1482819E2F5D2032006C14C5 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					148281AB2F5D2033006C14C5 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 1482819E2F5D2032006C14C5;
+					};
+					148281B52F5D2033006C14C5 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 1482819E2F5D2032006C14C5;
+					};
+					148282402F5D2CA4006C14C5 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+				};
+			};
+			buildConfigurationList = 1482819A2F5D2032006C14C5 /* Build configuration list for PBXProject "iScrobble" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 148281962F5D2032006C14C5;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 148281A02F5D2032006C14C5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1482819E2F5D2032006C14C5 /* iScrobble */,
+				148281AB2F5D2033006C14C5 /* iScrobbleTests */,
+				148281B52F5D2033006C14C5 /* iScrobbleUITests */,
+				148282402F5D2CA4006C14C5 /* iScrobbleWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1482819D2F5D2032006C14C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1482825B2F5D317E006C14C5 /* iScrobble.icon in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		148281AA2F5D2033006C14C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		148281B42F5D2033006C14C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1482823F2F5D2CA4006C14C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1482825C2F5D317E006C14C5 /* iScrobble.icon in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1482819B2F5D2032006C14C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		148281A82F5D2033006C14C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		148281B22F5D2033006C14C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1482823D2F5D2CA4006C14C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		148281AE2F5D2033006C14C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1482819E2F5D2032006C14C5 /* iScrobble */;
+			targetProxy = 148281AD2F5D2033006C14C5 /* PBXContainerItemProxy */;
+		};
+		148281B82F5D2033006C14C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1482819E2F5D2032006C14C5 /* iScrobble */;
+			targetProxy = 148281B72F5D2033006C14C5 /* PBXContainerItemProxy */;
+		};
+		148282522F5D2CA5006C14C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 148282402F5D2CA4006C14C5 /* iScrobbleWidgetExtension */;
+			targetProxy = 148282512F5D2CA5006C14C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		148281BE2F5D2033006C14C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		148281BF2F5D2033006C14C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		148281C12F5D2033006C14C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = iScrobble;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = iScrobble/iScrobble.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = TCAMYW4BX8;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_FILE_ACCESS_MUSIC_FOLDER = readonly;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = iScrobble;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexif.iScrobble;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		148281C22F5D2033006C14C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = iScrobble;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				AUTOMATION_APPLE_EVENTS = NO;
+				CODE_SIGN_ENTITLEMENTS = iScrobble/iScrobble.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = TCAMYW4BX8;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_FILE_ACCESS_MUSIC_FOLDER = readonly;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = iScrobble;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexif.iScrobble;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		148281C42F5D2033006C14C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexif.iScrobbleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iScrobble.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iScrobble";
+			};
+			name = Debug;
+		};
+		148281C52F5D2033006C14C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexif.iScrobbleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iScrobble.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iScrobble";
+			};
+			name = Release;
+		};
+		148281C72F5D2033006C14C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexif.iScrobbleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = iScrobble;
+			};
+			name = Debug;
+		};
+		148281C82F5D2033006C14C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexif.iScrobbleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = iScrobble;
+			};
+			name = Release;
+		};
+		148282562F5D2CA5006C14C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = iScrobbleWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TCAMYW4BX8;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iScrobbleWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iScrobbleWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexif.iScrobble.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		148282572F5D2CA5006C14C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = iScrobbleWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TCAMYW4BX8;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iScrobbleWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iScrobbleWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hexif.iScrobble.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1482819A2F5D2032006C14C5 /* Build configuration list for PBXProject "iScrobble" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				148281BE2F5D2033006C14C5 /* Debug */,
+				148281BF2F5D2033006C14C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		148281C02F5D2033006C14C5 /* Build configuration list for PBXNativeTarget "iScrobble" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				148281C12F5D2033006C14C5 /* Debug */,
+				148281C22F5D2033006C14C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		148281C32F5D2033006C14C5 /* Build configuration list for PBXNativeTarget "iScrobbleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				148281C42F5D2033006C14C5 /* Debug */,
+				148281C52F5D2033006C14C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		148281C62F5D2033006C14C5 /* Build configuration list for PBXNativeTarget "iScrobbleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				148281C72F5D2033006C14C5 /* Debug */,
+				148281C82F5D2033006C14C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		148282552F5D2CA5006C14C5 /* Build configuration list for PBXNativeTarget "iScrobbleWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				148282562F5D2CA5006C14C5 /* Debug */,
+				148282572F5D2CA5006C14C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 148281972F5D2032006C14C5 /* Project object */;
+}

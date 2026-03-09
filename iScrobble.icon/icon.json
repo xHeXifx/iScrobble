@@ -1,0 +1,51 @@
+{
+  "fill" : "system-dark",
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "fill" : {
+            "linear-gradient" : [
+              "display-p3:0.89003,1.00000,0.89562,1.00000",
+              "display-p3:1.00000,0.10439,0.00000,1.00000"
+            ],
+            "orientation" : {
+              "start" : {
+                "x" : 0.8038004359286294,
+                "y" : 0.34846128512880564
+              },
+              "stop" : {
+                "x" : 0.5,
+                "y" : 0.7
+              }
+            }
+          },
+          "hidden" : false,
+          "image-name" : "drawing.svg",
+          "name" : "drawing",
+          "position" : {
+            "scale" : 1.2,
+            "translation-in-points" : [
+              -10,
+              0
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}
