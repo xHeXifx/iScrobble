@@ -6,13 +6,13 @@
         {
           "fill" : {
             "linear-gradient" : [
-              "display-p3:0.89003,1.00000,0.89562,1.00000",
-              "display-p3:1.00000,0.10439,0.00000,1.00000"
+              "display-p3:1.00000,0.03512,0.07484,1.00000",
+              "display-p3:0.95298,0.93910,0.96783,1.00000"
             ],
             "orientation" : {
               "start" : {
-                "x" : 0.8038004359286294,
-                "y" : 0.34846128512880564
+                "x" : 0.9389032160194175,
+                "y" : 0.2600709314775161
               },
               "stop" : {
                 "x" : 0.5,
@@ -20,13 +20,12 @@
               }
             }
           },
-          "hidden" : false,
-          "image-name" : "drawing.svg",
-          "name" : "drawing",
+          "image-name" : "bitmap.svg",
+          "name" : "bitmap",
           "position" : {
-            "scale" : 1.2,
+            "scale" : 1.4,
             "translation-in-points" : [
-              -10,
+              15,
               0
             ]
           }
