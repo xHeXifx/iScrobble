@@ -104,6 +104,20 @@ final class ScrobbleManager {
             lastScrobbledTrack = track
             lastScrobbledDate = Date()
             statsManager.recordScrobble(track: track)
+            
+            if let username = storageManager.username {
+                print("[ScrobbleManager] Fetching updated total scrobbles from Last.fm for \(username)")
+                do {
+                    let totalScrobbles = try await lastFMClient.getUserInfo(username: username)
+                    print("[ScrobbleManager] Updating total scrobbles to \(totalScrobbles)")
+                    statsManager.updateTotalFromLastFM(totalScrobbles)
+                } catch {
+                    print("[ScrobbleManager] Failed to fetch user info: \(error.localizedDescription)")
+                }
+            } else {
+                print("[ScrobbleManager] No username available to fetch total scrobbles")
+            }
+            
             scrobbleError = nil
             writeSharedState(track: currentTrack, isPlaying: true)
             print("[ScrobbleManager] Scrobbled: \(track.artist) - \(track.title)")

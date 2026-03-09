@@ -37,7 +37,7 @@ final class AboutWindowController: NSObject, NSWindowDelegate {
 
 struct AboutWindowContent: View {
     private var version: String {
-        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "2.0"
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "2.1"
     }
 
     var body: some View {

@@ -92,6 +92,41 @@ final class LastFMClient {
         _ = try await post(params: params)
     }
 
+    func getUserInfo(username: String) async throws -> Int {
+        print("[LastFMClient] Fetching user info for: \(username)")
+        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "method", value: "user.getInfo"),
+            URLQueryItem(name: "user", value: username),
+            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "format", value: "json")
+        ]
+
+        guard let url = urlComponents.url else {
+            print("[LastFMClient] Failed to construct URL for user info")
+            throw LastFMError.invalidResponse
+        }
+
+        let (data, response) = try await URLSession.shared.data(from: url)
+
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200..<300).contains(httpResponse.statusCode) else {
+            print("[LastFMClient] Invalid HTTP response for user info")
+            throw LastFMError.invalidResponse
+        }
+
+        if let errorResponse = try? JSONDecoder().decode(ErrorOnlyResponse.self, from: data),
+           let code = errorResponse.error {
+            print("[LastFMClient] API error fetching user info: \(errorResponse.message ?? "Unknown")")
+            throw LastFMError.apiError(code: code, message: errorResponse.message ?? "Unknown error")
+        }
+
+        let userInfoResponse = try JSONDecoder().decode(UserInfoResponse.self, from: data)
+        let playcount = Int(userInfoResponse.user.playcount) ?? 0
+        print("[LastFMClient] User info received - Total scrobbles: \(playcount)")
+        return playcount
+    }
+
     private func apiSig(for params: [String: String]) -> String {
         let excluded: Set<String> = ["format", "callback"]
         let sorted = params
@@ -154,4 +189,13 @@ private struct MobileSessionResponse: Decodable {
 private struct ErrorOnlyResponse: Decodable {
     let error: Int?
     let message: String?
+}
+
+private struct UserInfoResponse: Decodable {
+    let user: UserPayload
+
+    struct UserPayload: Decodable {
+        let name: String
+        let playcount: String
+    }
 }

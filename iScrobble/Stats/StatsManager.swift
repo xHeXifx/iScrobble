@@ -28,9 +28,11 @@ struct ListeningStats: Codable {
         return formatter.string(from: Date())
     }
 
-    mutating func record(track: Track) {
-        totalScrobbles += 1
+    mutating func updateTotalScrobbles(_ total: Int) {
+        totalScrobbles = total
+    }
 
+    mutating func record(track: Track) {
         let today = Self.todayString
         if let index = dailyStats.firstIndex(where: { $0.date == today }) {
             dailyStats[index].scrobbleCount += 1
@@ -73,6 +75,12 @@ final class StatsManager {
 
     func recordScrobble(track: Track) {
         stats.record(track: track)
+        save()
+    }
+
+    func updateTotalFromLastFM(_ total: Int) {
+        print("[StatsManager] Updating total scrobbles from Last.fm: \(total)")
+        stats.updateTotalScrobbles(total)
         save()
     }
 
